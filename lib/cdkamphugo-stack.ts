@@ -27,7 +27,7 @@ export class CdkamphugoStack extends cdk.Stack {
         BASEURL: BASE_URL,
       },
       // remove if use ammplify.yml in the amplify repository.
-   	  buildSpec: codebuild.BuildSpec.fromObject({
+      buildSpec: codebuild.BuildSpec.fromObject({
         version: '1',
         frontend: {
           phases: {
