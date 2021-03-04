@@ -25,33 +25,7 @@ export class CdkamphugoStack extends cdk.Stack {
       }),
       environmentVariables: {
         BASEURL: BASE_URL,
-      },
-      // remove if use ammplify.yml in the amplify repository.
-      buildSpec: codebuild.BuildSpec.fromObject({
-        version: '1',
-        frontend: {
-          phases: {
-            build: {
-              commands: [
-                'wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz',
-                'tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz',
-                'export PATH=$PATH:/usr/local/go/bin',
-                'wget https://github.com/gohugoio/hugo/releases/download/v0.81.0/hugo_extended_0.81.0_Linux-64bit.tar.gz',
-                'tar -xf hugo_extended_0.81.0_Linux-64bit.tar.gz hugo',
-                'mv hugo /usr/bin/hugo',
-                'hugo --baseURL $BASEURL',
-              ]
-            }
-          },
-          artifacts: {
-            baseDirectory: 'public',
-            files: '**/*',
-          },
-          cache: {
-            paths: []
-          }
-        }
-      }),
+      }
     })
     
     const masterBranch = app.addBranch('master', {
